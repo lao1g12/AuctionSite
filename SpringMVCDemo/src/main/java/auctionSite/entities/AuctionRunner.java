@@ -1,10 +1,10 @@
-package com.fdmgroup.AuctionSite;
+package auctionSite.entities;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.UserMethodDAOImpl;
 
 public class AuctionRunner {
 

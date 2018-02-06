@@ -15,9 +15,10 @@ import javax.persistence.TypedQuery;
 
 import org.junit.Test;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.springmvcdemo.controllers.Logging;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.controllers.Logging;
+import auctionSite.entities.Listing;
+import auctionSite.entities.User;
 
 
 public class ListingDAOImplTest {

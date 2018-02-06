@@ -1,4 +1,4 @@
-package com.fdmgroup.AuctionSite.DAOs;
+package auctionSite.DAOs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,10 +11,10 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.springmvcdemo.controllers.Logging;
+import auctionSite.controllers.Logging;
+import auctionSite.entities.Listing;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.User;
 
 public class ListingDAOImpl implements ListingDAO {
 

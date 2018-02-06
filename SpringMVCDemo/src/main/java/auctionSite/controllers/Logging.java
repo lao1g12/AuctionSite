@@ -1,4 +1,4 @@
-package com.fdmgroup.springmvcdemo.controllers;
+package auctionSite.controllers;
 import org.apache.log4j.Logger;
 
 public class Logging {

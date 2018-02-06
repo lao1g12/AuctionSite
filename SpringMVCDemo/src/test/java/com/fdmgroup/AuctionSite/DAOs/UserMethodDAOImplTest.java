@@ -14,7 +14,8 @@ import javax.persistence.TypedQuery;
 
 import org.junit.Test;
 
-import com.fdmgroup.AuctionSite.User;
+import auctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.entities.User;
 
 
 

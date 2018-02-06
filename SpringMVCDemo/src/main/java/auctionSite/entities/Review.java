@@ -1,4 +1,4 @@
-package com.fdmgroup.AuctionSite;
+package auctionSite.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

@@ -5,12 +5,13 @@ import org.junit.Test;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.Person;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.controllers.WelcomeController;
+import auctionSite.entities.Listing;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.Person;
+import auctionSite.entities.User;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;

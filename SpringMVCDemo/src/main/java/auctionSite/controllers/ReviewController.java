@@ -1,4 +1,4 @@
-package com.fdmgroup.springmvcdemo.controllers;
+package auctionSite.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,12 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.Review;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.ReviewDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.ReviewDAOImpl;
+import auctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.Review;
+import auctionSite.entities.User;
 
 @Controller
 public class ReviewController {

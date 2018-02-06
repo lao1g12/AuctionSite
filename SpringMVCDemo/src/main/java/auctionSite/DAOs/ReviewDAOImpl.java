@@ -1,4 +1,4 @@
-package com.fdmgroup.AuctionSite.DAOs;
+package auctionSite.DAOs;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fdmgroup.AuctionSite.Review;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.springmvcdemo.controllers.Logging;
+import auctionSite.controllers.Logging;
+import auctionSite.entities.Review;
+import auctionSite.entities.User;
 
 public class ReviewDAOImpl implements ReviewDAO {
 	

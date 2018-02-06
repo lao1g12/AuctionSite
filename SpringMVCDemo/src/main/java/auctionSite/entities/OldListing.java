@@ -1,4 +1,4 @@
-package com.fdmgroup.AuctionSite;
+package auctionSite.entities;
 
 import java.util.Calendar;
 import java.util.Date;

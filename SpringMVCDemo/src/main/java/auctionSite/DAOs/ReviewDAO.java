@@ -1,9 +1,9 @@
-package com.fdmgroup.AuctionSite.DAOs;
+package auctionSite.DAOs;
 
 import java.util.List;
 
-import com.fdmgroup.AuctionSite.Review;
-import com.fdmgroup.AuctionSite.User;
+import auctionSite.entities.Review;
+import auctionSite.entities.User;
 
 public interface ReviewDAO {
 	

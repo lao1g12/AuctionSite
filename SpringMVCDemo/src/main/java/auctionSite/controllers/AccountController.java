@@ -1,4 +1,4 @@
-package com.fdmgroup.springmvcdemo.controllers;
+package auctionSite.controllers;
 
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.entities.Listing;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.User;
 
 @Controller
 public class AccountController {

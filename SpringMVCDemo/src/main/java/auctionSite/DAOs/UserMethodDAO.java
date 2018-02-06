@@ -1,6 +1,6 @@
-package com.fdmgroup.AuctionSite.DAOs;
+package auctionSite.DAOs;
 
-import com.fdmgroup.AuctionSite.User;
+import auctionSite.entities.User;
 
 public interface UserMethodDAO {
 

@@ -16,13 +16,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.ui.Model;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.Person;
-import com.fdmgroup.AuctionSite.SearchMethod;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.controllers.SearchController;
+import auctionSite.entities.Listing;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.Person;
+import auctionSite.entities.SearchMethod;
+import auctionSite.entities.User;
 
 public class SearchControllerTest {
 	private ListingDAOImpl listDao;

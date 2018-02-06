@@ -1,4 +1,4 @@
- package com.fdmgroup.springmvcdemo.controllers;
+ package auctionSite.controllers;
 
 import java.security.Principal;
 import java.util.Calendar;
@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.Person;
-import com.fdmgroup.AuctionSite.User;
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
-import com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.UserMethodDAOImpl;
+import auctionSite.entities.Listing;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.Person;
+import auctionSite.entities.User;
 
 @Controller
 public class WelcomeController {

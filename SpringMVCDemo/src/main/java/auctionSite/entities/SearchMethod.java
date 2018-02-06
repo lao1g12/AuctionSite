@@ -1,4 +1,4 @@
-package com.fdmgroup.AuctionSite;
+package auctionSite.entities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl;
+import auctionSite.DAOs.ListingDAOImpl;
 
 public class SearchMethod {
 	@Autowired

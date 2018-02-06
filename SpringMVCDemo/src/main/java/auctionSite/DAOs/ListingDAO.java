@@ -1,12 +1,12 @@
-package com.fdmgroup.AuctionSite.DAOs;
+package auctionSite.DAOs;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.fdmgroup.AuctionSite.Listing;
-import com.fdmgroup.AuctionSite.OldListing;
-import com.fdmgroup.AuctionSite.User;
+import auctionSite.entities.Listing;
+import auctionSite.entities.OldListing;
+import auctionSite.entities.User;
 
 public interface ListingDAO {
 
