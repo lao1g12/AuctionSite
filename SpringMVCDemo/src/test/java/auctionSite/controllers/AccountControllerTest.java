@@ -1,4 +1,4 @@
-package com.fdmgroup.springmvcdemo.controllers;
+package auctionSite.controllers;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;

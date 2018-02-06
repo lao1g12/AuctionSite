@@ -1,4 +1,4 @@
-package com.fdmgroup.springmvcdemo.controllers;
+package auctionSite.controllers;
 
 import org.junit.Before;
 import org.junit.Test;
