@@ -9,7 +9,7 @@
                             http://www.springframework.org/schema/mvc
                             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="com.fdmgroup.springmvcdemo.controllers" />
+	<context:component-scan base-package="auctionSite.controllers" />
 	<mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/user/css/**" location="/css/" />
 	<mvc:resources mapping="/img/**" location="/img/" />
@@ -26,9 +26,9 @@
 		factory-method="createEntityManagerFactory">
 		<constructor-arg value="UpdateMode" />
 	</bean>
-	<bean id="userDao" class="com.fdmgroup.AuctionSite.DAOs.UserMethodDAOImpl" />
-	<bean id="listDao" class="com.fdmgroup.AuctionSite.DAOs.ListingDAOImpl" />
-	<bean id="reviewDao" class="com.fdmgroup.AuctionSite.DAOs.ReviewDAOImpl" />
+	<bean id="userDao" class="auctionSite.DAOs.UserMethodDAOImpl" />
+	<bean id="listDao" class="auctionSite.DAOs.ListingDAOImpl" />
+	<bean id="reviewDao" class="auctionSite.DAOs.ReviewDAOImpl" />
 </beans>
 
 
