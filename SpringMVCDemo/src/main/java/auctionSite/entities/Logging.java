@@ -1,4 +1,4 @@
-package auctionSite.controllers;
+package auctionSite.entities;
 import org.apache.log4j.Logger;
 
 public class Logging {

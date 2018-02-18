@@ -1,9 +1,7 @@
 package auctionSite.controllers;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import auctionSite.DAOs.ControllerSpareLogic;
 import auctionSite.DAOs.ListingDAOImpl;
-import auctionSite.DAOs.UserMethodDAOImpl;
 import auctionSite.entities.Listing;
-import auctionSite.entities.OldListing;
-import auctionSite.entities.SearchMethod;
+import auctionSite.entities.Logging;
 import auctionSite.entities.User;
 
 @Controller
@@ -30,20 +27,19 @@ public class SearchController {
 	}
 
 	@Autowired
-	private UserMethodDAOImpl userDao;
-	@Autowired
 	private ListingDAOImpl listDao;
+	@Autowired
+	private ControllerSpareLogic spareLogic;
 
-	public SearchController(UserMethodDAOImpl userDao, ListingDAOImpl listDao) {
+	public SearchController(ListingDAOImpl listDao, ControllerSpareLogic spareLogic) {
 		super();
-		this.userDao = userDao;
 		this.listDao = listDao;
+		this.spareLogic = spareLogic;
 	}
 
 	@RequestMapping(value = { "/user/doSearch", "/doSearch" })
 	public String doSearch(HttpServletRequest request, HttpSession session) {
 		StringBuffer sb = new StringBuffer();
-		SearchMethod sm = new SearchMethod();
 		String search = request.getParameter("search");
 		String category = request.getParameter("category");
 		String brand = request.getParameter("brand");
@@ -62,25 +58,19 @@ public class SearchController {
 		String searchString = sb.toString();
 
 		List<String> listOfKeyWords = new ArrayList<String>(Arrays.asList(searchString.split(" ")));
-		System.out.println(listOfKeyWords);
 		List<Listing> listingList = listDao.getAllListings();
-		System.out.println(listingList.size());
 		int listSize = listOfKeyWords.size();
-		System.out.println(listOfKeyWords.size());
 		for (int i = 0; i < listOfKeyWords.size(); i++) {
 			listSize = listOfKeyWords.size() - i;
-			List<Listing> searchList = sm.searchForListings(listingList, listOfKeyWords, listSize);
+			List<Listing> searchList = spareLogic.searchForListings(listingList, listOfKeyWords, listSize);
 			if (searchList.size() > 0) {
 				request.setAttribute("searchList", searchList);
 				Logging.Log("info", "A search was made and " + searchList.size() + " listings were found");
-
 				return "Search";
 			}
 		}
 		Logging.Log("info", "A search was made and no listings were found.");
-			String username = (String) session.getAttribute("username");
-			return ("redirect:/user/goHome");
-
+		return ("redirect:/user/goHome");
 
 	}
 
@@ -99,21 +89,21 @@ public class SearchController {
 		User user = (User) session.getAttribute("user");
 		Listing listing = listDao.getListing(id);
 		if (bid > listing.getCurrentPrice()) {
-			if(listing.getBuyNow() > 0) {
-				if(bid >= listing.getBuyNow()) {
+			if (listing.getBuyNow() > 0) {
+				if (bid >= listing.getBuyNow()) {
 					listing.setCurrentPrice(listing.getBuyNow());
 					listing.setWinningUser(user);
 					session.setAttribute("winListing", listing);
 					return "redirect:/user/buyNowWin";
-				} 
+				}
 			}
-				listDao.bidOnListing(id, bid, user);
-				Listing newListing = listDao.getListing(id);
-				request.setAttribute("listing", newListing);
-				request.setAttribute("Bid", "Your bid has successfully been placed!");
-				Logging.Log("info", user.getUsername() + " placed a bid of " + bid + " on " + listing.getListingId());
-				return "Listing";
-			
+			listDao.bidOnListing(id, bid, user);
+			Listing newListing = listDao.getListing(id);
+			request.setAttribute("listing", newListing);
+			request.setAttribute("Bid", "Your bid has successfully been placed!");
+			Logging.Log("info", user.getUsername() + " placed a bid of " + bid + " on " + listing.getListingId());
+			return "Listing";
+
 		} else
 			request.setAttribute("listing", listing);
 		request.setAttribute("Bid", "Your bid was too low!");
@@ -121,40 +111,24 @@ public class SearchController {
 				+ ", but the bid was too low, redirected too the Listing page");
 		return "Listing";
 	}
-	
+
 	@RequestMapping("/user/buyNow")
-	public String buyNow(HttpServletRequest request, HttpSession session, @RequestParam int id,
-			Model model, RedirectAttributes ra) {
+	public String buyNow(HttpSession session, @RequestParam int id) {
 		User user = (User) session.getAttribute("user");
 		Listing listing = listDao.getListing(id);
 		listing.setCurrentPrice(listing.getBuyNow());
 		listing.setWinningUser(user);
 		session.setAttribute("winListing", listing);
 		return "redirect:/user/buyNowWin";
-		
+
 	}
-	
+
 	@RequestMapping("/user/buyNowWin")
 	public String buyNowWin(HttpSession session) {
 		Listing listing = (Listing) session.getAttribute("winListing");
-		OldListing oldListing = new OldListing();
-		oldListing.setFinalPrice(listing.getCurrentPrice());
-		oldListing.setDeliveryOptions(listing.getDeliveryOptions());
-		oldListing.setDescription(listing.getDescription());
-		oldListing.setImage(listing.getImage());
-		oldListing.setName(listing.getName());
-		oldListing.setUser(listing.getUser());
-		oldListing.setWinningUser(listing.getWinningUser());
-		oldListing.setEndDate(Calendar.getInstance());
-		oldListing.setPaid("notPaid");
-		oldListing.setReviewed("notReviewed");
-		Logging.Log("info", listing.getListingId() +" is finished and moved to the finished table");
-		listDao.AddOldListing(oldListing);
-		listDao.removeListing(listing.getListingId());
-		
-		
+		spareLogic.newOldListing(listing);
 		return "redirect:/user/account";
-		
+
 	}
 
 }

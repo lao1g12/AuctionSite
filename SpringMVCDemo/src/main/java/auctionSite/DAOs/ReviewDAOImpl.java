@@ -6,9 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import auctionSite.controllers.Logging;
+import auctionSite.entities.Logging;
 import auctionSite.entities.Review;
 import auctionSite.entities.User;
 
@@ -28,7 +29,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 		manager.persist(review);
-		Logging.Log("info", review.getReviewId()+" was added");
+		Logging.Log("info",review.getReviewId()+" was added");
 		manager.getTransaction().commit();
 		
 	}
@@ -38,7 +39,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		TypedQuery<Review> query = manager.createQuery("select review from Review review where review.oldListing.listingId = ?", Review.class);
 		query.setParameter(1, id);
 		List<Review> reviews = query.getResultList();
-		Logging.Log("info", "Get reviews for "+id+" was done and "+reviews.size()+" reviews were found.");
+		Logging.Log("info","Get reviews for "+id+" was done and "+reviews.size()+" reviews were found.");
 		return reviews;
 	}
 
@@ -48,7 +49,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		manager.getTransaction().begin();
 		user.setRating(newRating);
 		manager.merge(user);
-		Logging.Log("info", user.getUsername()+"'s information was updated.");
+		Logging.Log("info",user.getUsername()+"'s information was updated.");
 		manager.getTransaction().commit();
 		System.out.println(user+" "+newRating);
 		

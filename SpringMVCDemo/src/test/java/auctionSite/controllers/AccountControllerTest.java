@@ -72,7 +72,7 @@ public class AccountControllerTest {
 		when(userCur.getPassword()).thenReturn(sameString);
 		when(userInf.getPassword()).thenReturn(sameString);
 
-		assertEquals("user/Account", aControl.doUpdateInfo(userInf, request, session));
+		assertEquals("redirect:/user/account", aControl.doUpdateInfo(userInf, request, session));
 	}
 	@Test
 	public void test_doUpdateInfo_inCorrect_returnsUserAccount() {
@@ -119,6 +119,11 @@ public class AccountControllerTest {
 		when(session.getAttribute("user")).thenReturn(user);
 		assertEquals("user/UpdateInfo", aControl.doPasswordUpdate(request, session));
 		
+	}
+	@Test
+	public void test_pay_returnsAccountPage() {
+		when(listDao.getOldListing(1)).thenReturn(oldListing);
+		assertEquals("redirect:/user/account", aControl.pay(1));
 	}
 
 }

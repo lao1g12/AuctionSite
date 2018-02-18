@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import auctionSite.DAOs.ListingDAOImpl;
 import auctionSite.DAOs.UserMethodDAOImpl;
-import auctionSite.entities.Listing;
+import auctionSite.entities.Logging;
 import auctionSite.entities.OldListing;
 import auctionSite.entities.User;
 
@@ -22,19 +22,15 @@ public class AccountController {
 	private UserMethodDAOImpl userDao;
 	@Autowired
 	private ListingDAOImpl listDao;
-	
-	
+
 	public AccountController(UserMethodDAOImpl userDao, ListingDAOImpl listDao) {
 		super();
 		this.userDao = userDao;
 		this.listDao = listDao;
 	}
-	
 
 	public AccountController() {
-
 	}
-
 
 	@RequestMapping("/user/updateInfo")
 	public String goToUpdateInfo(Model model, HttpSession session) {
@@ -52,12 +48,13 @@ public class AccountController {
 
 		} else {
 			request.setAttribute("Incorrect", "Oops the password entered is incorrect!");
-			Logging.Log("info", userCur.getUsername()+" attempted to updated account info but the password was incorrect, redirected to the UpdateInfo page");
+			Logging.Log("info", userCur.getUsername()
+					+ " attempted to updated account info but the password was incorrect, redirected to the UpdateInfo page");
 			return "user/UpdateInfo";
 
 		}
 		request.setAttribute("UpdatedInfo", "Your profile information has been updated");
-		Logging.Log("info", userInf.getUsername()+" updated account info");
+		Logging.Log("info", userInf.getUsername() + " updated account info");
 		return "redirect:/user/account";
 	}
 
@@ -72,21 +69,22 @@ public class AccountController {
 				request.setAttribute("UpdatedPass", "Your password has been succesfully changed");
 				user.setPassword(newPassword);
 				userDao.updateUser(user);
-				Logging.Log("info", user.getUsername()+" updated password");
+				Logging.Log("info", user.getUsername() + " updated password");
 				return "user/Account";
 			} else {
 				request.setAttribute("passNotMatch", "The two new passwords you entered do not match!");
-				Logging.Log("info", user.getUsername()+" attempted to change password but the two new passwords were different, redirected to the UpdateInfo page");
+				Logging.Log("info", user.getUsername()
+						+ " attempted to change password but the two new passwords were different, redirected to the UpdateInfo page");
 				return "user/UpdateInfo";
 			}
 		} else {
 			request.setAttribute("incorrectPass", "The password you entered is not correct");
-			Logging.Log("info", user.getUsername()+" attempted to change password but the current password was wrong, redirected to the UpdateInfo page");
-
+			Logging.Log("info", user.getUsername()
+					+ " attempted to change password but the current password was wrong, redirected to the UpdateInfo page");
 			return "user/UpdateInfo";
 		}
 	}
-	
+
 	@RequestMapping("/user/pay")
 	public String pay(@RequestParam int id) {
 		OldListing oldListing = listDao.getOldListing(id);
@@ -94,6 +92,5 @@ public class AccountController {
 		listDao.updateOldListing(oldListing);
 		return "redirect:/user/account";
 	}
-
 
 }

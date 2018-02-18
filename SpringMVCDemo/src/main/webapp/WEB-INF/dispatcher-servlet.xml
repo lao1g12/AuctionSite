@@ -29,6 +29,7 @@
 	<bean id="userDao" class="auctionSite.DAOs.UserMethodDAOImpl" />
 	<bean id="listDao" class="auctionSite.DAOs.ListingDAOImpl" />
 	<bean id="reviewDao" class="auctionSite.DAOs.ReviewDAOImpl" />
+	<bean id="spareLogic" class="auctionSite.DAOs.ControllerSpareLogic"/>
 </beans>
 
 

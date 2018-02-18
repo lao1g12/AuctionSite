@@ -3,8 +3,8 @@ package auctionSite.controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,21 +20,23 @@ import auctionSite.entities.User;
 @Controller
 public class ReviewController {
 
-	public ReviewController() {	}
+	public ReviewController() {
+	}
+
 	@Autowired
 	private UserMethodDAOImpl userDao;
 	@Autowired
 	private ListingDAOImpl listDao;
 	@Autowired
 	private ReviewDAOImpl reviewDao;
-	
+	private Logger logger = Logger.getLogger("logger");
+
 	public ReviewController(UserMethodDAOImpl userDao, ListingDAOImpl listDao, ReviewDAOImpl reviewDao) {
 		super();
 		this.userDao = userDao;
 		this.listDao = listDao;
 		this.reviewDao = reviewDao;
 	}
-	
 
 	@RequestMapping("/user/goToPlaceReviewBought")
 	public String goToPlaceReviewBought(Model model, @RequestParam int id) {
@@ -42,18 +44,18 @@ public class ReviewController {
 		model.addAttribute("role", "buyer");
 		model.addAttribute("oldListing", oldListing);
 		return "user/Review";
-		
+
 	}
-	
+
 	@RequestMapping("/user/goToPlaceReviewSold")
 	public String goToPlaceReviewSold(Model model, HttpServletRequest request, @RequestParam int id) {
 		OldListing oldListing = listDao.getOldListing(id);
 		model.addAttribute("role", "seller");
 		model.addAttribute("oldListing", oldListing);
 		return "user/Review";
-		
+
 	}
-	
+
 	@RequestMapping("/user/doReview")
 	public String doReview(HttpServletRequest request, HttpSession session) {
 		User seller = userDao.getUser(request.getParameter("seller"));
@@ -67,22 +69,22 @@ public class ReviewController {
 		User user = (User) session.getAttribute("user");
 		String username = user.getUsername();
 		System.out.println("111111111111111111111111111111111111111111111111111111111111111111");
-		if(username.equals(seller.getUsername())) {
+		if (username.equals(seller.getUsername())) {
 			System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222");
-			int newRating =buyer.getRating()+rating;
+			int newRating = buyer.getRating() + rating;
 			reviewDao.updateRating(buyer, newRating);
 			System.out.println(newRating);
 		} else {
 			System.out.println("333333333333333333333333333333333333333333333333333333333333333333333333333333");
-			int newRating = seller.getRating()+rating;
+			int newRating = seller.getRating() + rating;
 			System.out.println(newRating);
 			reviewDao.updateRating(seller, newRating);
 		}
 		reviewDao.placeReview(review);
-		if(oldListing.getReviewed().equals("notReviewed")) {
+		if (oldListing.getReviewed().equals("notReviewed")) {
 			oldListing.setReviewed(reviewer);
-			
-		}else {
+
+		} else {
 			oldListing.setReviewed("reviewed");
 		}
 		listDao.updateOldListing(oldListing);
