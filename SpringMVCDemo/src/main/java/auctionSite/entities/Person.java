@@ -16,10 +16,10 @@ import javax.persistence.TemporalType;
 @Table(name = "AUCTION_PERSONINFO")
 
 public class Person {
-	
+
 	@Id
-	@SequenceGenerator(name="personid_sequence", sequenceName="personid_sequence", initialValue=1, allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="personid_sequence")
+	@SequenceGenerator(name = "personid_sequence", sequenceName = "personid_sequence", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personid_sequence")
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -30,19 +30,9 @@ public class Person {
 	private String accountDetails;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar startDate = Calendar.getInstance();
-	
 
-
-
-
-
-
-
-	public Person() {	}
-	
-	
-	
-	
+	public Person() {
+	}
 
 	public Person(String firstName, String lastName, String gender, String address, String email, String interests) {
 		super();
@@ -53,9 +43,7 @@ public class Person {
 		this.email = email;
 		this.interests = interests;
 	}
-	
-	
-	
+
 	public String getGender() {
 		return gender;
 	}
@@ -71,43 +59,55 @@ public class Person {
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getInterests() {
 		return interests;
 	}
+
 	public void setInterests(String interests) {
 		this.interests = interests;
 	}
+
 	public String getAccountDetails() {
 		return accountDetails;
 	}
+
 	public void setAccountDetails(String accountDetails) {
 		this.accountDetails = accountDetails;
 	}
+
 	public Calendar getStartDate() {
 		return startDate;
 	}
-	
+
 	public Date getStartDateFormat() {
 
 		Date date = this.startDate.getTime();
@@ -115,7 +115,5 @@ public class Person {
 		return date;
 
 	}
-
-
 
 }

@@ -50,9 +50,6 @@ public class Listing {
 	@Transient
 	private String listOfWords;
 
-
-
-
 	public Listing() {
 	}
 
@@ -73,10 +70,11 @@ public class Listing {
 		// this.user = user;
 		// user.addListing(this);
 	}
-	
+
 	public String getListOfWords() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(name+" "+brand+" "+category+" "+colour+" "+condition+" "+description+" "+keywords+" "+size);
+		sb.append(name + " " + brand + " " + category + " " + colour + " " + condition + " " + description + " "
+				+ keywords + " " + size);
 		String searchString = sb.toString();
 		return searchString;
 	}
@@ -85,7 +83,7 @@ public class Listing {
 
 		this.listOfWords = listOfWords;
 	}
-	
+
 	public double getBuyNow() {
 		return buyNow;
 	}
@@ -214,8 +212,8 @@ public class Listing {
 		this.endDate = (Calendar) startDate.clone();
 		this.endDate.add(Calendar.DAY_OF_MONTH, 7);
 	}
-	
-	public void setEndDate(Calendar endDate){
+
+	public void setEndDate(Calendar endDate) {
 		this.endDate = endDate;
 	}
 
@@ -235,6 +233,7 @@ public class Listing {
 		return date;
 
 	}
+
 	public Date getEndDateFormat() {
 
 		Date date = this.endDate.getTime();
@@ -242,6 +241,5 @@ public class Listing {
 		return date;
 
 	}
-
 
 }

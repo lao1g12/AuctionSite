@@ -42,22 +42,12 @@ public class OldListing {
 	private User user;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private User winningUser;
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="oldListing", orphanRemoval=true)
-	private Set<Review> reviews=new HashSet<Review>();
-
-
-
-
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "oldListing", orphanRemoval = true)
+	private Set<Review> reviews = new HashSet<Review>();
 
 	public OldListing() {
 	}
 
-	
-	
-	
-	
-	
-	
 	public Set<Review> getReviews() {
 		return reviews;
 	}
@@ -70,23 +60,17 @@ public class OldListing {
 		return reviewed;
 	}
 
-
 	public void setReviewed(String reviewed) {
 		this.reviewed = reviewed;
 	}
-
 
 	public String getPaid() {
 		return paid;
 	}
 
-
-
 	public void setPaid(String paid) {
 		this.paid = paid;
 	}
-
-
 
 	public User getWinningUser() {
 		return winningUser;
@@ -120,8 +104,6 @@ public class OldListing {
 		this.name = name;
 	}
 
-
-
 	public double getFinalPrice() {
 		return finalPrice;
 	}
@@ -146,7 +128,6 @@ public class OldListing {
 		this.deliveryOptions = deliveryOptions;
 	}
 
-
 	public Calendar getEndDate() {
 		return endDate;
 	}
@@ -170,6 +151,5 @@ public class OldListing {
 		return date;
 
 	}
-
 
 }

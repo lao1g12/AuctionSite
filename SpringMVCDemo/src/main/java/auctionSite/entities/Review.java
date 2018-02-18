@@ -27,9 +27,9 @@ public class Review {
 	private User seller;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private User buyer;
-	
-	
-	public Review() {	}
+
+	public Review() {
+	}
 
 	public Review(String title, String body, int rating, OldListing oldListing, User seller, User buyer) {
 		super();
@@ -40,7 +40,6 @@ public class Review {
 		this.seller = seller;
 		this.buyer = buyer;
 	}
-	
 
 	public int getReviewId() {
 		return reviewId;
@@ -97,6 +96,5 @@ public class Review {
 	public void setBuyer(User buyer) {
 		this.buyer = buyer;
 	}
-	
-}
 
+}

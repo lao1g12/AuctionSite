@@ -1,30 +1,31 @@
 package auctionSite.entities;
+
 import org.apache.log4j.Logger;
 
 public class Logging {
-	
+
 	final static Logger logger = Logger.getLogger(Logging.class);
-	
-	public static void Log(String severity, String message){
-		
+
+	public static void Log(String severity, String message) {
+
 		Logging obj = new Logging();
-		
-		if (severity.equals("fatal")){
+
+		if (severity.equals("fatal")) {
 			obj.logFatal(message);
-		} else if (severity.equals("info")){
+		} else if (severity.equals("info")) {
 			obj.logInfo(message);
-		} else if (severity.equals("error")){
+		} else if (severity.equals("error")) {
 			obj.logError(message);
-		} else if (severity.equals("warning")){
+		} else if (severity.equals("warning")) {
 			obj.logWarning(message);
-		} else if (severity.equals("debug")){
+		} else if (severity.equals("debug")) {
 			obj.logDebug(message);
-		} else if (severity.equals("trace")){
+		} else if (severity.equals("trace")) {
 			obj.logTrace(message);
 		}
-		
+
 	}
-	
+
 	private void logTrace(String message) {
 		logger.trace(message);
 	}
@@ -32,7 +33,7 @@ public class Logging {
 	private void logDebug(String message) {
 		logger.debug(message);
 	}
-	
+
 	private void logWarning(String message) {
 		logger.warn(message);
 	}
@@ -44,19 +45,17 @@ public class Logging {
 	private void logFatal(String message) {
 		logger.fatal(message);
 	}
-	
+
 	private void logInfo(String message) {
 		logger.info(message);
 	}
 
 }
 
-/*PUT IN POM.XML DEPENDENCIES:
-
-<dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-</dependency>
-
-*/
+/*
+ * PUT IN POM.XML DEPENDENCIES:
+ * 
+ * <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId>
+ * <version>1.2.17</version> </dependency>
+ * 
+ */
