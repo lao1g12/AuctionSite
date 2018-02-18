@@ -17,22 +17,22 @@
 		<div id="TitLog" class="row">
 			<div class="col col2">
 				<img id="logol"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 			<div class="col col2">
 				<img id="logor"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 			<div class="col col4">
-				<img id="logoti" src="https://photos-5.dropbox.com/t/2/AAD9l6W2svDqoYzoX0TYGbHi_-jXos4gjRFNylL_572OMg/12/97270925/jpeg/32x32/1/_/1/2/LittleMan.jpg/EM3Ju0sY7AYgBygH/vTRta-9g1_qbiWR8Qf9TtX6vNL6Q-giqOPmWo0-nz5o?size=2048x1536&size_mode=3">
+				<img id="logoti" src="img/LittleMan.jpg">
 			</div>
 			<div class="col col2">
 				<img id="logor"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 			<div class="col col2">
 				<img id="logor"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 		</div>
 

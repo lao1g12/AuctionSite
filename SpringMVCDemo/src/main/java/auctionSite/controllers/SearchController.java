@@ -69,6 +69,7 @@ public class SearchController {
 			}
 		}
 		Logging.Log("info", "A search was made and no listings were found.");
+		//Fix redirect need to route users and non users!!!
 		return ("redirect:/user/goHome");
 
 	}

@@ -13,22 +13,22 @@
 		<div id="TitLog" class="row">
 			<div class="col col2">
 				<img id="logol"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 			<div class="col col2">
 				<img id="logor"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 			<div class="col col4">
 				<img id="logoti" src="img/title.png">
 			</div>
 			<div class="col col2">
 				<img id="logor"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 			<div class="col col2">
 				<img id="logor"
-					src="https://image.freepik.com/free-photo/auctioneer_1048-1642.jpg">
+					src="img/Man.jpg">
 			</div>
 		</div>
 

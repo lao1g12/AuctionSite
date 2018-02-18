@@ -29,7 +29,6 @@ public class ReviewController {
 	private ListingDAOImpl listDao;
 	@Autowired
 	private ReviewDAOImpl reviewDao;
-	private Logger logger = Logger.getLogger("logger");
 
 	public ReviewController(UserMethodDAOImpl userDao, ListingDAOImpl listDao, ReviewDAOImpl reviewDao) {
 		super();
