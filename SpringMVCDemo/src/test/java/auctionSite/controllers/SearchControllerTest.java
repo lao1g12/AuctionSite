@@ -56,14 +56,14 @@ public class SearchControllerTest {
 		listingList.add(listing2);
 		when(listDao.getAllListings()).thenReturn(listingList);
 		when(request.getParameter("keyWords")).thenReturn("hello");
-		assertEquals("Search", sControl.doSearch(request, session));
+		assertEquals("Search", sControl.doSearch(request));
 
 	}
 
 	@Test
 	public void test_doSearch_noListFound_ReturnsSearchRedirectGoHome() {
 		when(request.getParameter("keyWords")).thenReturn("hello");
-		assertEquals("redirect:/user/goHome", sControl.doSearch(request, session));
+		assertEquals("redirect:/user/goHome", sControl.doSearch(request));
 
 	}
 

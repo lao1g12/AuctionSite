@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import auctionSite.DAOs.ControllerSpareLogic;
 import auctionSite.DAOs.ListingDAOImpl;
@@ -38,7 +37,7 @@ public class SearchController {
 	}
 
 	@RequestMapping(value = { "/user/doSearch", "/doSearch" })
-	public String doSearch(HttpServletRequest request, HttpSession session) {
+	public String doSearch(HttpServletRequest request) {
 		StringBuffer sb = new StringBuffer();
 		String search = request.getParameter("search");
 		String category = request.getParameter("category");
@@ -94,6 +93,7 @@ public class SearchController {
 					listing.setCurrentPrice(listing.getBuyNow());
 					listing.setWinningUser(user);
 					session.setAttribute("winListing", listing);
+					Logging.Log("info", "The bid: "+bid+" was greater than the Buy now price: "+listing.getBuyNow());
 					return "redirect:/user/buyNowWin";
 				}
 			}
@@ -119,6 +119,7 @@ public class SearchController {
 		listing.setCurrentPrice(listing.getBuyNow());
 		listing.setWinningUser(user);
 		session.setAttribute("winListing", listing);
+		Logging.Log("info", "The buy now was activated on item: "+id+" by "+session.getAttribute("user"));
 		return "redirect:/user/buyNowWin";
 
 	}

@@ -21,8 +21,6 @@ public class ControllerSpareLogic {
 			for (String keyword : listOfKeyWords) {
 				if (listing.getListOfWords().contains(keyword)) {
 					count += 1;
-					System.out.println(listSize);
-					System.out.println(count);
 					if (count == listSize || count == 7) {
 						searchList.add(listing);
 						break;

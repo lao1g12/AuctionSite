@@ -35,16 +35,12 @@ public class WelcomeController {
 	public WelcomeController() {
 	}
 
-
-
 	public WelcomeController(UserMethodDAOImpl userDao, ListingDAOImpl listDao, ControllerSpareLogic spareLogic) {
 		super();
 		this.userDao = userDao;
 		this.listDao = listDao;
 		this.spareLogic = spareLogic;
 	}
-
-
 
 	@RequestMapping("/")
 	public String goToIndex(Model model, HttpSession session) {
@@ -77,7 +73,7 @@ public class WelcomeController {
 			session.setAttribute("person", person);
 			Listing listing = new Listing();
 			model.addAttribute("listing", listing);
-			Logging.Log("info",username + " returned to the homepage");
+			Logging.Log("info", username + " returned to the homepage");
 			return "user/LoggedHome";
 		} catch (NullPointerException ne) {
 		}
@@ -101,22 +97,20 @@ public class WelcomeController {
 
 			} catch (PersistenceException pe) {
 				request.setAttribute("UsernameTaken", "The username you have entered is already taken!");
-				Logging.Log("info","User tried to sign up with user '" + user.getUsername()
+				Logging.Log("info", "User tried to sign up with user '" + user.getUsername()
 						+ "' which is taken, redirected to Register page");
 				return "Register";
 			}
 			Logging.Log("info", user.getUsername() + " Registered to the webpage");
 		} else {
 			request.setAttribute("Incorrect", "Oops the two passwords entered do not match!");
-			Logging.Log("info","User passwords did not match in Signup, redirected to Register page");
+			Logging.Log("info", "User passwords did not match in Signup, redirected to Register page");
 			return "Register";
 
 		}
 
 		return "AuctionHome";
 	}
-
-	// Do this for login
 
 	@RequestMapping("/user/login")
 	public String goToHome(HttpSession session, Principal principal, Model model) {
@@ -127,7 +121,7 @@ public class WelcomeController {
 		session.setAttribute("person", person);
 		Listing listing = new Listing();
 		model.addAttribute("listing", listing);
-		Logging.Log("info",user.getUsername() + " logged in");
+		Logging.Log("info", user.getUsername() + " logged in");
 		return "user/LoggedHome";
 
 	}
@@ -136,13 +130,13 @@ public class WelcomeController {
 	public String logout(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		String userName = user.getUsername();
-		Logging.Log("info",userName + " logged out");
+		Logging.Log("info", userName + " logged out");
 		session.invalidate();
 		return "redirect:/";
 	}
 
 	@RequestMapping("/user/doListItem")
-	public String doListing(Listing listing, HttpServletRequest request, HttpSession session, RedirectAttributes ra)
+	public String doListing(Listing listing, HttpServletRequest request, HttpSession session, RedirectAttributes redirectAtt)
 			throws PersistenceException {
 
 		User user = (User) session.getAttribute("user");
@@ -150,7 +144,7 @@ public class WelcomeController {
 			if (listing.getBuyNow() == 0.0) {
 
 			} else {
-				ra.addFlashAttribute("priceInvalid", "The buy now price must be greater than the starting price!");
+				redirectAtt.addFlashAttribute("priceInvalid", "The buy now price must be greater than the starting price!");
 				return "redirect:/user/login";
 			}
 		}
@@ -159,13 +153,12 @@ public class WelcomeController {
 		request.setAttribute("listing", listing);
 		String userName = user.getUsername();
 		int listingId = listing.getListingId();
-		Logging.Log("info",userName + " listed item " + listingId);
+		Logging.Log("info", userName + " listed item " + listingId);
 		return "Listing";
 	}
 
 	@RequestMapping("/user/account")
 	public String account(HttpSession session) {
-
 		String currentUsername = (String) session.getAttribute("username");
 		List<Listing> userListings = listDao.getListOfListingsForUser(currentUsername);
 		List<Listing> winningListings = listDao.getListOfListingsForUserWinning(currentUsername);
@@ -175,7 +168,7 @@ public class WelcomeController {
 		session.setAttribute("winningListings", winningListings);
 		session.setAttribute("wonListings", wonListings);
 		session.setAttribute("soldListings", soldListings);
-		Logging.Log("info",currentUsername + " viewed accounts page");
+		Logging.Log("info", currentUsername + " viewed accounts page");
 		return "user/Account";
 	}
 

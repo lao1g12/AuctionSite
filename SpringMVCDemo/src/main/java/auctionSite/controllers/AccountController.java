@@ -33,7 +33,7 @@ public class AccountController {
 	}
 
 	@RequestMapping("/user/updateInfo")
-	public String goToUpdateInfo(Model model, HttpSession session) {
+	public String goToUpdateInfo(Model model) {
 		User user = new User();
 		model.addAttribute("user", user);
 		return "user/UpdateInfo";
@@ -90,6 +90,7 @@ public class AccountController {
 		OldListing oldListing = listDao.getOldListing(id);
 		oldListing.setPaid("paid");
 		listDao.updateOldListing(oldListing);
+		Logging.Log("info", "OldListing: "+id+" has been paid for");
 		return "redirect:/user/account";
 	}
 
