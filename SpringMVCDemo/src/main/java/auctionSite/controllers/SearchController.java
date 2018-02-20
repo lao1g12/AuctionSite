@@ -17,6 +17,7 @@ import auctionSite.DAOs.ControllerSpareLogic;
 import auctionSite.DAOs.ListingDAOImpl;
 import auctionSite.entities.Listing;
 import auctionSite.entities.Logging;
+import auctionSite.entities.OldListing;
 import auctionSite.entities.User;
 
 @Controller
@@ -128,7 +129,10 @@ public class SearchController {
 	@RequestMapping("/user/buyNowWin")
 	public String buyNowWin(HttpSession session) {
 		Listing listing = (Listing) session.getAttribute("winListing");
-		spareLogic.newOldListing(listing);
+		OldListing oldListing = spareLogic.newOldListing(listing);
+		Logging.Log("info", listing.getListingId() + " is finished and moved to the finished table");
+		listDao.AddOldListing(oldListing);
+		listDao.removeListing(listing.getListingId());
 		return "redirect:/user/account";
 
 	}

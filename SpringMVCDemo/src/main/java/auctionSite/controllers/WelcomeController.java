@@ -51,7 +51,10 @@ public class WelcomeController {
 			// current.roll(Calendar.DAY_OF_MONTH, -9);
 			// if (Calendar.getInstance().after(current)) {
 			if (Calendar.getInstance().after(listCheck.getEndDate())) {
-				spareLogic.newOldListing(listCheck);
+				OldListing oldListing = spareLogic.newOldListing(listCheck);
+				Logging.Log("info", listCheck.getListingId() + " is finished and moved to the finished table");
+				listDao.AddOldListing(oldListing);
+				listDao.removeListing(listCheck.getListingId());
 			}
 		}
 

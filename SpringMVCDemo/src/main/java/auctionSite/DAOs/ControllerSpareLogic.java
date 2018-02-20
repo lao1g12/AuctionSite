@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import auctionSite.entities.Listing;
-import auctionSite.entities.Logging;
 import auctionSite.entities.OldListing;
 
 public class ControllerSpareLogic {
@@ -34,7 +33,7 @@ public class ControllerSpareLogic {
 
 	}
 
-	public void newOldListing(Listing listing) {
+	public OldListing newOldListing(Listing listing) {
 		ListingDAOImpl listDao = new ListingDAOImpl();
 		OldListing oldListing = new OldListing();
 		oldListing.setFinalPrice(listing.getCurrentPrice());
@@ -47,9 +46,7 @@ public class ControllerSpareLogic {
 		oldListing.setEndDate(Calendar.getInstance());
 		oldListing.setPaid("notPaid");
 		oldListing.setReviewed("notReviewed");
-		Logging.Log("info", listing.getListingId() + " is finished and moved to the finished table");
-		listDao.AddOldListing(oldListing);
-		listDao.removeListing(listing.getListingId());
+		return oldListing;
 	}
 
 }
